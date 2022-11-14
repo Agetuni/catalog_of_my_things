@@ -1,0 +1,2 @@
+class MuicAlbum
+end
