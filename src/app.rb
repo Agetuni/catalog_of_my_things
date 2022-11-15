@@ -1,5 +1,4 @@
-class App  
-
+class App
   def initialize
     @response = 0
   end
@@ -29,31 +28,46 @@ class App
 
   def startup
     @response = gets.chomp.to_i
+    if @response >= 1 && @response <= 6
+      list_items
+    else
+      add_item
+    end
+  end
+
+  def list_items
     case @response
     when 1
-      list_books #Please not that this methods are not defined yet
+      list_books
     when 2
-      list_music_albums #Please not that this methods are not defined yet
+      list_music_albums
     when 3
-      list_games #Please not that this methods are not defined yet
+      list_games
     when 4
-      list_movies
+      list_genres
     when 5
       list_labels
     when 6
-      list_genres
-    when 7
       list_authors
-    when 8
-      list_sources
-    when 9
+    else
+      puts 'Invalid input'
+    end
+  end
+
+  def add_item
+    case @response
+    when 7
       add_book
-    when 10
+    when 8
       add_music_album
-    when 11
+    when 9
       add_game
+    when 10
+      add_label
+    when 11
+      add_genre
     when 12
-      add_movie
+      add_author
     end
   end
 end
