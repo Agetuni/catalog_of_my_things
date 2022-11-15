@@ -1,5 +1,11 @@
-# rubocop:disable Lint/EmptyClass
+require_relative 'app'
 
 class Main
+  def initialize
+    @app = App.new
+    @app.options
+  end
 end
-# rubocop:enable Lint/EmptyClass
+
+main = Main.new
+main
