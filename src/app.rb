@@ -1,59 +1,52 @@
-class App  
-
+class App
   def initialize
     @response = 0
   end
 
   def options
     puts 'Welcome to My catalog of things'
-    while @response != 13
+    while @response != 11
       puts(
         'Select a number to start an action:
         1 - List all books
         2 - List all music albums
         3 - List of games
-        4 - List all movies
-        5 - List all labels
-        6 - List all genres
-        7 - List all authors
-        8 - List all sources
-        9 - Add a book
-        10 - Add a music album
-        11 - Add a game
-        12 - Add a movie
-        13 - Exit'
+        4 - List all labels
+        5 - List all genres
+        6 - List all authors
+        7 - List all sources
+        8 - Add a book
+        9 - Add a music album
+        10 - Add a game
+        11 - Exit'
       )
-      startup
+      start_up
     end
   end
 
-  def startup
+  def start_up
     @response = gets.chomp.to_i
     case @response
     when 1
-      list_books #Please not that this methods are not defined yet
+      list_books
     when 2
-      list_music_albums #Please not that this methods are not defined yet
+      list_music_albums
     when 3
-      list_games #Please not that this methods are not defined yet
+      list_games
     when 4
-      list_movies
-    when 5
       list_labels
-    when 6
+    when 5
       list_genres
-    when 7
+    when 6
       list_authors
-    when 8
+    when 7
       list_sources
-    when 9
+    when 8
       add_book
-    when 10
+    when 9
       add_music_album
-    when 11
+    when 10
       add_game
-    when 12
-      add_movie
     end
   end
 end
