@@ -14,8 +14,24 @@ def startup(choice)
   case choice
   when '1'
     puts ''
-    puts "#{chioice} choice selected"
+    puts "choice #{choice} selected"
     puts ''
+
+  when '2'
+    puts ''
+    puts " #{choice} selected"
+    puts ''
+
+  when '3'
+    puts ''
+    puts "#{choice} selected"
+    puts ''
+
+  when '4'
+    puts ''
+    puts "choice #{choice} "
+    puts ''
+
   end
 end
 
