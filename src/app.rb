@@ -5,28 +5,26 @@ class App
 
   def options
     puts 'Welcome to My catalog of things'
-    while @response != 13
+    while @response != 11
       puts(
         'Select a number to start an action:
         1 - List all books
         2 - List all music albums
         3 - List of games
-        4 - List all movies
-        5 - List all labels
-        6 - List all genres
-        7 - List all authors
-        8 - List all sources
-        9 - Add a book
-        10 - Add a music album
-        11 - Add a game
-        12 - Add a movie
-        13 - Exit'
+        4 - List all labels
+        5 - List all genres
+        6 - List all authors
+        7 - List all sources
+        8 - Add a book
+        9 - Add a music album
+        10 - Add a game
+        11 - Exit'
       )
-      startup
+      start_up
     end
   end
 
-  def startup
+  def start_up
     @response = gets.chomp.to_i
     if @response >= 1 && @response <= 6
       list_items
