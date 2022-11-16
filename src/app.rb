@@ -10,6 +10,9 @@ class App
     @games = []
     @source = []
     @author = []
+    @labels = load_labels
+    @genres = []
+    @books = load_books
   end
 
   def options
@@ -42,6 +45,8 @@ class App
     else
       add_item
     end
+    store_books(@books)
+    store_labels(@labels)
   end
 
   def list_items
@@ -78,6 +83,11 @@ class App
     when 12
       add_game
     end
+  end
+
+  def user_input(message)
+    print message
+    gets.chomp
   end
 end
 # rubocop:enable Metrics/CyclomaticComplexity
