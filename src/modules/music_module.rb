@@ -4,17 +4,17 @@ module MusicModule
     # Create a new music album
     def create_music
         puts 'Is the Music Album you want to create on spotify? [y/n]: '
-        on_sportify = gets.chomp
-        case on_sportify
+        on_spotify = gets.chomp
+        case on_spotify
         when 'y'
-        on_sportify = true
+        on_spotify = true
         when 'n'
-        on_sportify = false
+        on_spotify = false
         end
         puts 'Enter the date it was published in this format (YYYY-MM-DD): '
         publish_date = gets.chomp
 
-        MusicAlbum.new(on_sportify, publish_date)
+        MusicAlbum.new(on_spotify, publish_date)
     end
     # Add a genre
     def add_new_genre
@@ -39,12 +39,12 @@ module MusicModule
         genre = add_new_genre
         @genres << genre.add_item(music)
         @music_albums << music
-        # save_genre
+        save_genre
         when 2
         genre = add_existing_genre
         genre.add_item(music)
         @music_albums << music
-        #save_genre
+        save_genre
         end
     end
 
@@ -52,7 +52,7 @@ module MusicModule
     puts 'Empty List: No music albums found' if @genres.empty?
     @genres.each_with_index do |genre, index|
       genre.items.each do |item|
-        puts "#{index}=> Name: '#{genre.name}', On spotify: '#{item.on_sportify}', Date Published : '#{item.publish_date}'"
+        puts "#{index}=> Name: '#{genre.name}', On spotify: '#{item.on_spotify}', Date Published : '#{item.publish_date}'"
       end
     end
   end
@@ -60,7 +60,7 @@ module MusicModule
   def list_genres
     puts 'Empty List: No genres found' if @genres.empty?
     @genres.each_with_index do |genre, index|
-      puts "#{index}=> Genre's Name: '#{genre.name}', Genre ID: '#{genre.id}'"
+      puts "#{index}=> Genre Name: '#{genre.name}', Genre ID: '#{genre.id}'"
     end
   end
 

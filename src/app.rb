@@ -1,19 +1,25 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 require_relative './app'
 require_relative './functionalities'
+require_relative 'classes/musicalbum'
+require_relative 'classes/genre'
+require_relative 'handle/handle_genre'
 
 class App
+include HandleGenre
   include Functionalities
   def initialize
     @response = 0
     @movies = []
-    @music_album = []
+    @music_albums = []
     @games = []
     @source = []
     @author = []
     @labels = load_labels
     @genres = []
     @books = load_books
+
+    load_genres
   end
 
   def options

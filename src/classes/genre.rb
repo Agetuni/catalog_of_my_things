@@ -1,7 +1,7 @@
 require_relative 'musicalbum'
 
 class Genre
-  attr_accessor :name, :item, :id
+  attr_accessor :name, :items, :id
 
   def initialize(name)
     @id = rand(1..100)

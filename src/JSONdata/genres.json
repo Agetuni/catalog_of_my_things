@@ -1,0 +1,26 @@
+[
+  {
+    "genre_id" : 50,
+    "name" : "Habeeb",
+    "Items" : [
+      {
+        "on_spotify" : true,
+        "publish_date" : "2022-09-01"
+      },
+      {
+        "on_spotify" : false,
+        "publish_date" : "2023-02-01"
+      }
+    ]
+  },
+  {
+    "genre_id" : 22,
+    "name" : "Clasic",
+    "Items" : [
+      {
+        "on_spotify" : true,
+        "publish_date" : "2034-06-06"
+      }
+    ]
+  }
+]
