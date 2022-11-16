@@ -7,6 +7,7 @@ class App
   def initialize
     @response = 0
     @movies = []
+    @music_album = []
     @games = []
     @source = []
     @author = []
