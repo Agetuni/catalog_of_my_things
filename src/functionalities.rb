@@ -1,8 +1,13 @@
-require_relative './classes/game'
-require_relative './classes/movie'
-require_relative './classes/author'
-require_relative './classes/source'
+require './classes/game'
+require './classes/movie'
+require './classes/author'
+require './classes/source'
+require './classes/genre'
+require './classes/label'
+require './classes/book'
+require 'json'
 
+# rubocop:disable Metrics/ModuleLength
 module Functionalities
   def add_game
     puts 'Published Date: '
@@ -94,4 +99,108 @@ module Functionalities
       puts "#{index + 1}) Source Name: #{value.name}, Source ID: #{value.id}"
     end
   end
+
+  ## books
+  def load_books
+    data = []
+    file = './files/books.json'
+    return data unless File.exist?(file) && File.read(file) != ''
+
+    JSON.parse(File.read(file)).each do |book|
+      new_book = Book.new(book['publish_date'], book['publisher'], book['cover_state'], archived: book['archived'])
+      new_book.genre = Genre.new(book['genre'])
+      new_book.author = Author.new(book['author']['first_name'], book['author']['last_name'])
+      new_book.label = Label.new(book['label'])
+      data << new_book
+    end
+
+    data
+  end
+
+  def list_books
+    if @books.empty?
+      puts 'The books list is empty'
+    else
+      puts '** Books list:'
+      @books.each_with_index do |book, index|
+        puts "#{index + 1}-[Book] ID: #{book.id} | Publisher: #{book.publisher} | " \
+             "Publish date: #{book.publish_date} | Cover state: #{book.cover_state} | Archived: #{book.archived}"
+      end
+    end
+  end
+
+  def add_book
+    author_first_name = user_input("Author's first name: ")
+    author_last_name = user_input("Author's last name: ")
+    author = Author.new(author_first_name, author_last_name)
+
+    publish_date = user_input("Book's publish date: ")
+    publisher = user_input("Book's publisher: ")
+    cover_state = user_input("Book's cover state [good, bad]: ")
+    genre = Genre.new(user_input("Book's genre: "))
+    label = Label.new(user_input("Book's label: "))
+    new_book = Book.new(publish_date, publisher, cover_state)
+    new_book.genre = genre
+    new_book.label = label
+    new_book.author = author
+    new_book.move_to_archive
+    @books << new_book
+    @labels << label
+    @genres << genre
+    puts 'The book  has been created successfully ✅'
+  end
+
+  def store_books(books)
+    return if books.empty?
+
+    file = './files/books.json'
+    File.new('./files/books.json', 'w+') unless File.exist?(file)
+
+    data = []
+
+    books.each do |book|
+      data << { id: book.id, publish_date: book.publish_date, publisher: book.publisher, cover_state: book.cover_state,
+                archived: book.archived, genre: book.genre, author: book.author, label: book.label }
+    end
+    File.write(file, JSON.generate(data))
+  end
+
+  ## labels
+  def store_labels(labels)
+    return if labels.empty?
+
+    file = './files/labels.json'
+    File.new('./files/labels.json', 'w+') unless File.exist?(file)
+
+    data = []
+
+    labels.each do |label|
+      data << { id: label.id, name: label.name }
+    end
+    File.write(file, JSON.generate(data))
+  end
+
+  def load_labels
+    data = []
+    file = './files/labels.json'
+    return data unless File.exist?(file) && File.read(file) != ''
+
+    JSON.parse(File.read(file)).each do |label|
+      data << Label.new(label['name'], label['id'])
+    end
+
+    data
+  end
+
+  def list_labels
+    if @labels.empty?
+      puts 'The Labels list is empty'
+    else
+      puts '🏷️  Labels list:'
+      @labels.each_with_index do |label, index|
+        puts "#{index + 1}-[Label] ID: #{label.id} | Name: #{label.name}"
+      end
+    end
+  end
 end
+# rubocop:enable Metrics/ModuleLength
