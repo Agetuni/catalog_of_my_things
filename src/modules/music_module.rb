@@ -15,4 +15,16 @@ module MusicModule
 
         MusicAlbum.new(on_sportify, publish_date)
     end
+
+    def add_new_genre
+        puts 'Enter name of genre: '
+        name = gets.chomp
+        Genre.new(name)
+    end
+
+    def add_existing_genre
+        puts 'Select ID of genre: '
+        genre_id = gets.chomp.to_i
+        @genres.find { |genre| genre.id == genre_id }
+    end
 end
