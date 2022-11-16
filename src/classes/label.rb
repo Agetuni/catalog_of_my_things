@@ -14,4 +14,3 @@ class Label
       item.label = self
     end
 end
-# rubocop:enable Lint/EmptyClass
