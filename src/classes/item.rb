@@ -1,11 +1,11 @@
 require 'date'
 class Item
-  attr_accessor :pubish_date, :archived, :label, :author, :genre, :source
+  attr_accessor :publish_date, :archived, :label, :author, :genre, :source
   attr_reader :id
 
-  def initialize(pubish_date)
+  def initialize(publish_date)
     @id = rand(1..1_000)
-    @pubish_date = pubish_date
+    @publish_date = publish_date
   end
 
   def add_source(source)
@@ -25,7 +25,7 @@ class Item
   end
 
   def can_be_archived?
-    Date.today - Date.parse(@pubish_date) > 3650
+    Date.today - Date.parse(@publish_date) > 3650
   end
 
   def move_to_archive

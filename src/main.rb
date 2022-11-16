@@ -2,8 +2,8 @@ require_relative 'app'
 
 class Main
   def initialize
-    @app = App.new
-    @app.options
+    @start = App.new
+    @start.options
   end
 end
 
