@@ -1,24 +1,35 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+require_relative './app'
+require_relative './functionalities'
+
 class App
+  include Functionalities
   def initialize
     @response = 0
+    @movies = []
+    @games = []
+    @source = []
+    @author = []
   end
 
   def options
     puts 'Welcome to My catalog of things'
-    while @response != 11
+    while @response != 13
       puts(
         'Select a number to start an action:
-        1 - List all books
-        2 - List all music albums
-        3 - List of games
-        4 - List all labels
-        5 - List all genres
-        6 - List all authors
-        7 - List all sources
-        8 - Add a book
-        9 - Add a music album
-        10 - Add a game
-        11 - Exit'
+          1 - List all books
+          2 - List all music albums
+          3 - List all movies
+          4 - List of games
+          5 - List all genres
+          6 - List all labels
+          7 - List all authors
+          8 - List all sources
+          9 - Add a book
+          10 - Add a music album
+          11 - Add a movie
+          12 - Add a game
+          13 - Exit'
       )
       start_up
     end
@@ -26,7 +37,7 @@ class App
 
   def start_up
     @response = gets.chomp.to_i
-    if @response >= 1 && @response <= 6
+    if @response >= 1 && @response <= 8
       list_items
     else
       add_item
@@ -40,13 +51,17 @@ class App
     when 2
       list_music_albums
     when 3
-      list_games
+      list_movies
     when 4
-      list_genres
+      list_games
     when 5
-      list_labels
+      list_genres
     when 6
+      list_labels
+    when 7
       list_authors
+    when 8
+      list_source
     else
       puts 'Invalid input'
     end
@@ -54,18 +69,15 @@ class App
 
   def add_item
     case @response
-    when 7
-      add_book
-    when 8
-      add_music_album
     when 9
-      add_game
+      add_book
     when 10
-      add_label
+      add_music_album
     when 11
-      add_genre
+      add_movie
     when 12
-      add_author
+      add_game
     end
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
