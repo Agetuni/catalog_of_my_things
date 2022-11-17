@@ -54,7 +54,7 @@ module MusicModule
     puts 'Empty List: No music albums found' if @genres.empty?
     @genres.each_with_index do |genre, index|
       genre.items.each do |item|
-        puts "#{index}=> Name: '#{genre.name}', On spotify: '#{item.on_spotify}', Date Published : '#{item.publish_date}'"
+        puts "#{index}=> Name: '#{genre.name}', On spotify: '#{item.on_spotify}', Date : '#{item.publish_date}'"
       end
     end
   end
