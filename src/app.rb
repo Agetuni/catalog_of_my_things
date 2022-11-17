@@ -1,13 +1,12 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 require_relative './app'
-# require_relative './functionalities'
 require_relative 'classes/musicalbum'
 require_relative 'classes/genre'
 require_relative 'handle/handle_genre'
 require_relative 'modules/functionalities_module'
 
 class App
-include HandleGenre
+  include HandleGenre
   include Functionalities
   def initialize
     @response = 0

@@ -1,7 +1,7 @@
 require 'json'
 
 module HelperMethods
-   # Writer Method
+  # Writer Method
   def write_json(array, file_path)
     opts = {
       array_nl: "\n",
