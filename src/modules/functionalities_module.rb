@@ -1,10 +1,10 @@
-require './classes/game'
-require './classes/movie'
-require './classes/author'
-require './classes/source'
-require './classes/genre'
-require './classes/label'
-require './classes/book'
+require_relative '../classes/genre'
+require_relative '../classes/game'
+require_relative '../classes/movie'
+require_relative '../classes/author'
+require_relative '../classes/source'
+require_relative '../classes/label'
+require_relative '../classes/book'
 require 'json'
 
 # rubocop:disable Metrics/ModuleLength
