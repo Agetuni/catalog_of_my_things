@@ -1,10 +1,10 @@
-require './classes/game'
-require './classes/movie'
-require './classes/author'
-require './classes/source'
-require './classes/genre'
-require './classes/label'
-require './classes/book'
+require_relative '../classes/genre'
+require_relative '../classes/game'
+require_relative '../classes/movie'
+require_relative '../classes/author'
+require_relative '../classes/source'
+require_relative '../classes/label'
+require_relative '../classes/book'
 require 'json'
 
 # rubocop:disable Metrics/ModuleLength
@@ -103,7 +103,7 @@ module Functionalities
   ## books
   def load_books
     data = []
-    file = './files/books.json'
+    file = './JSONdata/books.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |book|
@@ -153,8 +153,8 @@ module Functionalities
   def store_books(books)
     return if books.empty?
 
-    file = './files/books.json'
-    File.new('./files/books.json', 'w+') unless File.exist?(file)
+    file = './JSONdata/books.json'
+    File.new('./JSONdata/books.json', 'w+') unless File.exist?(file)
 
     data = []
 
@@ -169,8 +169,8 @@ module Functionalities
   def store_labels(labels)
     return if labels.empty?
 
-    file = './files/labels.json'
-    File.new('./files/labels.json', 'w+') unless File.exist?(file)
+    file = './JSONdata/labels.json'
+    File.new('./JSONdata/labels.json', 'w+') unless File.exist?(file)
 
     data = []
 
@@ -182,7 +182,7 @@ module Functionalities
 
   def load_labels
     data = []
-    file = './files/labels.json'
+    file = './JSONdata/labels.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |label|
