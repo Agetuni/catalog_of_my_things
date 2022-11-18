@@ -17,7 +17,7 @@
 
  -  coming soon 
 ## Demo Video
--  coming soon 
+-   [Video](https://youtu.be/O5Cj5-eBFNw)
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
