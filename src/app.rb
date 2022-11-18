@@ -3,23 +3,29 @@ require_relative './app'
 require_relative 'classes/musicalbum'
 require_relative 'classes/genre'
 require_relative 'handle/handle_genre'
-require_relative 'modules/functionalities_module'
+require_relative 'modules/book_module'
+require_relative './modules/preserve_module'
+require_relative './modules/game_module'
+require_relative './modules/movie_module'
 
 class App
   include HandleGenre
-  include Functionalities
+  include BookModule
+  include GameModule
+  include MovieModule
   def initialize
     @response = 0
-    @movies = []
+    @movies = load_movies
     @music_albums = []
-    @games = []
-    @source = []
-    @author = []
+    @games = load_games
+    @source = load_source
+    @author = load_author
     @labels = load_labels
     @genres = []
     @books = load_books
 
     load_genres
+    load_games
   end
 
   def options
